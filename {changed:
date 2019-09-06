@@ -1,8 +1,0 @@
-Last metadata expiration check: 0:02:44 ago on Fri 06 Sep 2019 01:46:54 PM UTC.
-No match for argument: fatal:
-No match for argument: [localhost]:
-No match for argument: FAILED!
-No match for argument: =
-No match for argument: false,
-No match for argument: msg:
-No match for argument: Aborting, target uses selinux but python bindings (libselinux-python) aren't installed!}
