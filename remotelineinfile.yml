@@ -1,0 +1,24 @@
+-
+   name: Reconfigure index.html
+   hosts: web
+   vars: 
+     srvc: httpd
+   tasks:
+     - shell: cat /usr/share/httpd/noindex/index.html
+       register: web_details
+     - lineinfile:
+         path: /usr/share/httpd/noindex/index.html
+         regexp: 'HELLO WORLD'
+         line: 'HELLO ASHISH'
+       become: yes
+       notify: 'restart httpd'
+       when: web_details.stdout.find('HELLO WORLD') != -1
+     - lineinfile:
+         path: /usr/share/httpd/noindex/index.html
+         line: 'HELLO ASHISH'
+       become: yes
+       notify: restart httpd
+   handlers: 
+     - name: restart httpd
+       service: name={{ srvc }} state=restarted
+       become: yes

@@ -1,0 +1,11 @@
+-
+   name: Check root user presence
+   hosts: localhost
+   tasks: 
+     - name: check root user presence
+       command: 'cat /etc/passwd'
+       register: user_details
+     - debug: msg='ashish user is present'
+       when: user_details.stdout.find('ashish') != -1
+     - debug: msg='ashish user is not present'
+       when: user_details.stdout.find('ashish') == -1

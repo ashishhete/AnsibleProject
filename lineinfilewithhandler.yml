@@ -1,0 +1,12 @@
+-
+   name: update the file
+   hosts: localhost
+   tasks:
+     - name: update the file
+       lineinfile:
+         path: /root/project/testlineinfile
+         line: 'Hello Ashish'
+       notify: FileIsUpdated
+   handlers: 
+     - name: FileIsUpdated
+       command: 'echo Hi Ashish, File is updated'

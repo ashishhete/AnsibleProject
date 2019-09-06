@@ -1,0 +1,13 @@
+-
+   name: install and start httpd
+   hosts: web
+   vars: 
+     pkg: httpd
+     srvc: httpd
+   tasks: 
+     - name: install httpd
+       yum: name='{{ pkg  }}' state=installed
+       become: yes
+     - name: start httpd
+       service: name='{{ srvc }}' state=started
+       become: yes
